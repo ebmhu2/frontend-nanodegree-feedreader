@@ -1,74 +1,88 @@
-# Project Overview
+# Feed Reader Testing Project
+ This is a web-based application that reads RSS feeds, created as a project for Udacity FEND Nanodegree.
+## Table of Contents
+ * [Getting started](#Getting-started)
+ * [Project-Dependencies](#Project-Dependencies)
+ * [About-Tests ](#About-Tests )
+ * [Additional-Tests](#Additional-Tests)
 
-In this project you are given a web-based application that reads RSS feeds. The original developer of this application clearly saw the value in testing, they've already included [Jasmine](http://jasmine.github.io/) and even started writing their first test suite! Unfortunately, they decided to move on to start their own company and we're now left with an application with an incomplete test suite. That's where you come in.
+## Getting-started
+### How to run Application ?
+#### Run Application Locally ####
+ A simple way to go is to clone or download this git repository to your local machine.
+ Locate to the repository/dist folder and open `index.html` file  on the browser.
+#### How to run Gulp tool ####
+* Ensure you've installed node.js. For more details, please refer to [node.js official website](https://nodejs.org/en/).
+* Clone or download this git repository to your local machine.
+* Locate to the project folder root cd project-folder-name
+* Open terminal, install gulp ```npm install gulp@3.9.0```, [Reference website](https://libraries.io/npm/gulp/3.9.0).
+* Install gulp-sass ```npm install node-sass gulp-sass --save-dev```, [Reference website](https://www.npmjs.com/package/gulp-sass).
+* Install browserSync ```npm install browser-sync --save-dev```, [Reference website](https://www.browsersync.io/docs#installation).
+* Install gulp-autoprefixer```npm install --save-dev gulp-autoprefixer```, [Reference website](https://www.npmjs.com/package/gulp-autoprefixer).
+* Install gulp-concat```npm install --save-dev gulp-concat```, [Reference website](https://www.npmjs.com/package/gulp-concat).
+* Install gulp-uglify```npm install --save-dev gulp-uglify```, [Reference website](https://www.npmjs.com/package/gulp-uglify).
+* Install pump ```npm install pump```, [Reference website](https://www.npmjs.com/package/pump).
+* Install gulp-remove-code```npm install gulp-remove-code --save-dev```, [Reference website](https://www.npmjs.com/package/gulp-remove-code).
+* Install gulp-eslint ```npm install gulp-eslint```, [Reference website](https://www.npmjs.com/package/gulp-eslint).
+#### How to build project ####
+1. Open terminal and locate to the project folder root cd project-folder-name.
+2. Type ```gulp build``` , then project will be build and strored in dist production folder.
+#### How to run project on local server and Watching Sass and html files for changes ####
+1. Open terminal and locate to the project folder root cd project-folder-name.
+2. Type ```gulp watch``` , project from dist folder will run on local server url as in terminal
+## Project-Dependencies
+ * Jasmine JavaScript Testing Framework
+  ```
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.3.0/jasmine.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.3.0/jasmine.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.3.0/jasmine-html.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/3.3.0/boot.min.js"></script>
+  ```
+ * Google Fonts
+  ```
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,700">
+  ```
+ * Google API
+   ```
+     <script src="http://google.com/jsapi"></script>
+   ```
+ * Jquery javascript library
+   ```
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   ```
+ * Handlebars.js is a sweet javascript library for building clean logicless templates based on the Mustache Templating Language.
+    ```
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+    ```
+## About-Tests
 
+ * Test Suite ```RSS Feeds``` contains the following set of tests :-
+    1. Test ```are defined``` to make sure that the allFeeds variable has been defined and that it is not empty.
+    2. Test ```URL is defined``` that loops through each feed in the allFeeds object and ensures
+       * its URL is defined.
+       * the URL is not empty.
+    3. Test ```name is defined``` that loops through each feed in the allFeeds object and ensures
+       * its name is defined
+       * the name is not empty.
 
-## Why this Project?
+ * Test Suite ```The menu``` contains the following set of tests :-
+     1. Test ```is hidden by default``` ensures the Menu element is hidden by default.
+     2. Test ```Menu is visible and hidden when menu icon is clicked``` ensures the menu changes visibility when the menu icon is clicked, This test have two expectations :
+        * The menu display when menu icon is clicked
+        * it hide when click menu icon again.
+ * Test Suite ```Initial Entries``` contains one Test :-
+      1. Test ```feed container has at least one entry``` ensures when the loadFeed function is called and completes its work, there is at least
+      a single .entry element within the .feed container.
+ * Test Suite ```New Feed Selection``` contains one Test :-
+       1. Test ```content changes``` that ensures when a new feed is loaded
+       by the loadFeed function, the feed content actually changes.
 
-Testing is an important part of the development process and many organizations practice a standard of development known as "test-driven development." This is when developers write tests first, before they ever start developing their application. All the tests initially fail and then they start writing application code to make these tests pass.
-
-Whether you work in an organization that uses test-driven development or in an organization that uses tests to make sure future feature development doesn't break existing features, it's an important skill to have!
-
-
-## What will I learn?
-
-You will learn how to use Jasmine to write a number of tests against a pre-existing application. These will test the underlying business logic of the application as well as the event handling and DOM manipulation.
-
-
-## How will this help my career?
-
-Writing effective tests requires analyzing multiple aspects of an application including the HTML, CSS and JavaScript - an extremely important skill when changing teams or joining a new company.
-
-Good tests give you the ability to quickly analyze whether new code breaks an existing feature within your codebase, without having to manually test all of the functionality.
-
-
-# Development Strategy
-
-For a refresher (or reference) before you begin writing code, we recommend reviewing the content from [JavaScript Testing](https://www.udacity.com/course/javascript-testing--ud549). Your project will be evaluated by a Udacity code reviewer according to the [Feed Reader Testing project rubric](https://review.udacity.com/#!/rubrics/18/view). Please review for detailed project requirements.
-
-1. Familiarize yourself with the starter code
-    * Open up `index.html` and review the functionality of the application within your browser
-    * What is all the code in `app.js` doing? Be sure to read all code comments
-    * Check out `style.css`. How is styling applied to the application?
-2. Explore the Jasmine spec file in `feedreader.js`
-    * This is the file in which you'll be writing your tests
-    * Make sure to read all code comments here as well
-    * Review the [Jasmine documentation](http://jasmine.github.io) if needed
-3. Edit the `allFeeds` variable in `app.js` to make the provided test fail
-    * See how Jasmine visualizes this failure in your application
-    * Return the `allFeeds` variable to a passing state after reviewing the failed test
-4. Write a test that loops through each feed in the `allFeeds` object and ensures it has a URL defined _and_ that the URL is not empty
-    * For example, how would you use a `for...of` loop in this test?
-5. Write a test that loops through each feed in the `allFeeds` object and ensures it has a name defined and that the name is not empty
-    * Think about how you wrote the previous test. What are you testing for this time?
-6. Write a new test suite named `"The menu"`
-    * What are you `describe`-ing in this test suite?
-7. Write a test that ensures the menu element is hidden by default
-    * You'll have to analyze the HTML and the CSS to determine how the hiding/showing of the menu element is implemented
-    * What code in `app.js` is directly involved with toggling the menu on and off?
-8. Write a test that ensures the menu changes visibility when the menu icon is clicked. This test should have two expectations: does the menu display itself when clicked, and does it hide when clicked again?
-    * Think about how you wrote the previous test. What is different this time around?
-    * Which clickable element are you checking for?
-    * How do you "simulate" a mouse click that element without actually clicking it?
-9. Write a test suite named `"Initial Entries"`
-    * What are you `describe`-ing in this test suite?
-10. Write a test that ensures when the `loadFeed` function is called and completes its work, there is at least a single `.entry` element within the `.feed` container
-    * How does Jasmine's `beforeEach()`function work?
-    * How does the `loadFeed()` function in `app.js` work? Is it synchronous or asynchronous?
-11. Write a test suite named `"New Feed Selection"`
-    * What are you `describe`-ing in this test suite?
-12. Write a test that ensures when a new feed is loaded by the `loadFeed` function that the content actually changes
-    * How is this test different from the previous test?
-
-Additionally, note that:
-
- * No test should be dependent on the results of another
- * Callbacks should be used to ensure that feeds are loaded before they are tested
- * Error handling should be implemented for undefined variables and out-of-bound array access
- * When complete, all of your tests should pass
-
-When you're all finished, write a `README` file detailing all steps required to successfully run the application. If you have added additional tests, provide documentation for what these future features are and what the tests are checking for.
-
-# Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+## Additional-Tests
+ * Test Suite ```New Feed Selection``` contains Two Tests one required and other is additional:-
+    1. Test ```Title changes``` that ensures when a new feed is loaded
+    by the loadFeed function, the feed Title actually changes.
+ * Test Suite ```The Slide Feed List``` contains the following set of tests :-
+      1. Test ```slide Feed list has data from allfeed``` ensures that slide feed list
+         has all name property from allFeeds array.
+      2. Test ```Feed list selection change correct``` ensures that when slide list selection
+         change , index will be change .
