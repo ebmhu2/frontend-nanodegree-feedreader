@@ -74,7 +74,7 @@
       1. Test ```feed container has at least one entry``` ensures when the loadFeed function is called and completes its work, there is at least
       a single .entry element within the .feed container.
  * Test Suite ```New Feed Selection``` contains one Test :-
-       1. Test ```content changes``` that ensures when a new feed is loaded
+     1. Test ```content changes``` that ensures when a new feed is loaded
        by the loadFeed function, the feed content actually changes.
 
 ## Additional-Tests
