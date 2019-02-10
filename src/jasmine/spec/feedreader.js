@@ -157,19 +157,15 @@ $(function() {
 		  while (randomIndex2 === randomIndex1) {
 		  	randomIndex2 = Math.floor(Math.random() * (allFeeds.length));
 		  }
-		  try {
-	  		loadFeed(randomIndex1, function() {
-		  		firstTitle = getFeedTitle();
-		  		firstFeedContent = getFeedContent();
-			  	loadFeed(randomIndex2, function() {
-			  		secondTitle = getFeedTitle();
-					  secondFeedContent = getFeedContent();
-					  done();
-				  });
+	  	loadFeed(randomIndex1, function() {
+		    firstTitle = getFeedTitle();
+		    firstFeedContent = getFeedContent();
+		    loadFeed(randomIndex2, function() {
+			    secondTitle = getFeedTitle();
+		      secondFeedContent = getFeedContent();
+			    done();
 			  });
-		  } catch (e) {
-		  	done.fail(e);
-		  }
+		  });
 	  },30000);
 
 	  /**
