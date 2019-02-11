@@ -105,7 +105,7 @@ $(function() {
 		 * a single .entry element within the .feed container.
 		 */
 	  it('feed container has at least one entry', function() {
-		  expect($('.feed a').length > 0).toBe(true);
+		  expect($('.feed .entry').length > 0).toBe(true);
 	  });
   });
 
